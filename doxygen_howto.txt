@@ -1,0 +1,84 @@
+------------------------------------------------------------------
+sudo apt-get install doxygen
+(ver 1.8.6)
+
+------------------------------------------------------------------
+$ doxygen -g
+
+Configuration file `Doxyfile' created.
+
+Now edit the configuration file and enter
+
+  doxygen Doxyfile
+
+to generate the documentation for your project
+
+------------------------------------------------------------------
+#customize Doxyfile
+vi Doxyfile
+
+PROJECT_NAME           = "odfs"
+OPTIMIZE_OUTPUT_FOR_C  = YES
+GENERATE_LATEX         = NO
+HTML_OUTPUT            = doc_html
+USE_MDFILE_AS_MAINPAGE = README.md //pierwsza strona dokumentacji 
+                                     moze pokazywac info z tego samego
+                                     pliku ktory bedzie uzywany do tego celu
+                                     na githubie
+
+------------------------------------------------------------------
+#wygenerowaie dokumentacji ( po kazdej zmianie w kodzie )
+$doxygen Doxyfile
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+Typical doxygen tags and their use
+
+/*! \file globaldecls.h
+      \brief Place to look for global variables, enums, functions
+           and macro definitions
+  */
+
+/** \var const int fileSize
+      \brief Default size of the file on disk
+  */
+const int fileSize = 1048576;
+
+/** \def SHIFT(value, length)
+      \brief Left shift value by length in bits
+  */
+#define SHIFT(value, length) ((value) << (length))
+
+/** \fn bool check_for_io_errors(FILE* fp)
+      \brief Checks if a file is corrupted or not
+      \param fp Pointer to an already opened file
+      \warning Not thread safe!
+  */
+bool check_for_io_errors(FILE* fp);
+
+------------------------------------------------------------------
+other structural commands are:
+   \class is used to indicate that the comment block contains 
+          documentation for the class 
+   \struct to document a C-struct.
+   \union to document a union.
+   \enum to document an enumeration type.
+   \fn to document a function.
+   \var to document a variable or typedef or enum value.
+   \def to document a #define.
+   \typedef to document a type definition.
+   \file to document a file.
+   \namespace to document a namespace.
+   \package to document a Java package.
+   \interface to document an IDL interface.
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+------------------------------------------------------------------
+------------------------------------------------------------------
+links:
+http://www.ibm.com/developerworks/aix/library/au-learningdoxygen/
+http://www-numi.fnal.gov/offline_software/srt_public_context/WebDocs/doxygen-howto.html
+
+------------------------------------------------------------------
+------------------------------------------------------------------
