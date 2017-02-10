@@ -1,7 +1,7 @@
 #ifndef ODFS
 #define ODFS
 #include <fuse.h>
-#include "liblmdb/lmdb.h"
+#include <lmdb.h>
 #include <stdlib.h>
 #include "fifo.h"
 #include <time.h>

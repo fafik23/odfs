@@ -2,7 +2,7 @@
     \brief odfs name plugin code
 */
 #include "odfs.h"
-#include "liblmdb/lmdb.h"
+#include <lmdb.h>
 #include <string.h>
 #include <stdio.h>
 #include "process_path.h"

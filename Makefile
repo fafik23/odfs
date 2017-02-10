@@ -11,7 +11,7 @@ OPT = -O2 -g3 -p -D_FILE_OFFSET_BITS=64 -Wall
 CFLAGS	= $(THREADS) $(OPT) $(W) $(XCFLAGS)
 LDLIBS	=
 SOLIBS	=
-LDFLAGS = -lfuse -l lmdb -pthread -L liblmdb/ -ldl
+LDFLAGS = -lfuse -llmdb -pthread -ldl
 prefix	= /usr/local
 
 ########################################################################
@@ -27,7 +27,7 @@ odfs_name.so:	odfs_name.c
 	$(CC)  odfs_name.c -o $@ -shared -DPIC -fPIC -D_FILE_OFFSET_BITS=64 -Wall
 
 odfs:	odfs.o fifo.o
-	$(CC) $(CFLAGS) $(LDFLAGS) odfs.o fifo.o $(LDLIBS) -o odfs
+	$(CC) $(CFLAGS) odfs.o fifo.o $(LDLIBS) -o odfs $(LDFLAGS)
 
 odfs.o:	odfs.c 
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c odfs.c
